@@ -5,10 +5,10 @@
 //unsure whether or not to create the querySelectors inside or outside 
 //the wrapped jQuery call
 
-var saveButton = document.querySelector("#save-button");
+var saveButton = document.querySelector(".saveBtn");
 
 //current day formated
-var currentDay = dayjs.unix().format('MMM D, YYYY, hh:mm:ss a');
+var currentDay = dayjs().format('MMM D, YYYY, hh:mm:ss a');
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -19,8 +19,12 @@ $(function () {
   // useful when saving the description in local storage?
   saveButton.addEventListener("click", function(event) {
     event.preventDefault();
+
+
   });
-  //
+  console.log(currentDay)
+
+  
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -30,14 +34,16 @@ $(function () {
   function applyTense(){
 
   }
+
+
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
   function showDate(){
-
-  }
+    $('#currentDay').text(currentDay)
+  } 
   //call applyTense
   applyTense();
   //call showDate
