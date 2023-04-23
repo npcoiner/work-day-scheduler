@@ -9,7 +9,7 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   saveButton.addEventListener("click", function(event) {
-
+    event.preventDefault();
   }
   //
   // TODO: Add code to apply the past, present, or future class to each time
