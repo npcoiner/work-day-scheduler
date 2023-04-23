@@ -16,7 +16,7 @@ $(function () {
   // current hour in 24-hour time?
   //
   function applyTense(){
-    
+
   }
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
@@ -26,7 +26,8 @@ $(function () {
   function showDate(){
 
   }
-
+  //call applyTense
+  applyTense();
   //call showDate
   showDate();
 });
