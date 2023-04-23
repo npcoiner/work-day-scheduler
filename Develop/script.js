@@ -9,7 +9,7 @@ var saveButton = document.querySelector(".saveBtn");
 
 //current day formated
 var currentDay = dayjs().format('MMM D, YYYY, hh:mm:ss a');
-
+var currentHour = dayjs().hour();
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -22,7 +22,12 @@ $(function () {
 
 
   });
-  console.log(currentDay)
+  
+  //TODO: Add a function which saves all events to storage
+
+  //TODO: Add a function which reads all events from storage and displays them
+  //onto the page
+
 
   
   // TODO: Add code to apply the past, present, or future class to each time
