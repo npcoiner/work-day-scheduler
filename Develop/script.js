@@ -7,6 +7,9 @@
 
 var saveButton = document.querySelector("#save-button");
 
+//current day formated
+var currentDay = dayjs.unix().format('MMM D, YYYY, hh:mm:ss a');
+
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
