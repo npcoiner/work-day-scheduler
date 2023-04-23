@@ -26,7 +26,8 @@ $(function () {
   //TODO: Add a function which saves all events to storage
 
   //TODO: Add a function which reads all events from storage and displays them
-  //onto the page
+  //onto the page. Should create a div element following the guidelines of the HTML 
+  //with an hourly block for each standard business hour
 
 
   
