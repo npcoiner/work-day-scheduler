@@ -10,7 +10,7 @@ $(function () {
   // useful when saving the description in local storage?
   saveButton.addEventListener("click", function(event) {
     event.preventDefault();
-  }
+  });
   //
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
