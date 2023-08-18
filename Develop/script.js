@@ -69,17 +69,32 @@ $(function () {
     var blockTime = parseInt($(this).attr('id'));
     console.log("this" + blockTime)
     $(this).attr('tense',  getTense(blockTime))
-});
+  });
 
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
+  function getAndSetFromStorage(){
+    var events = localStorage.getItem('events');
+    if (events) {
+      events = JSON.parse(events);
+      $('.time-block').each(function(i) {
+        if (events[i]){
+          $('this').children("textarea").text(events[i]);
+        }
+      });
+    } else {
+      return;
+    }
+  };
   // TODO: Add code to display the current date in the header of the page.
   function showDate(){
     $('#currentDay').text(currentDay)
   } 
+  //call getAndSetFromStorage
+  getAndSetFromStorage();
   //call applyTense
   applyTense();
   //call showDate
