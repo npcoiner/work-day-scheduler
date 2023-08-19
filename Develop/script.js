@@ -8,7 +8,7 @@ var currentHour = dayjs().hour();
 // in the html.
 $(function () {
   function createTimeBlocks(){
-    for(var i = 9; i < 18; i++){
+    for(var i = 9; i < 24; i++){
       //save button
       var buttonEl = $('<button>');
       buttonEl.attr('id', i);
