@@ -7,6 +7,50 @@ var currentHour = dayjs().hour();
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+  function createTimeBlocks(){
+    for(var i = 9; i < 18; i++){
+      //save button
+      var buttonEl = $('<button>');
+      buttonEl.attr('id', i);
+      buttonEl.attr('aria-label',"save");
+      buttonEl.addClass('btn saveBtn col-2 col-md-1');
+
+      //not sure what this is
+      var iEl = $('<i>');
+      iEl.addClass('fas fa-save');
+      iEl.attr('aria-hidden',"true");
+      buttonEl.append(iEl);
+
+      //textarea
+      var textareaEl = $('<textarea>');
+      textareaEl.addClass('col-8 col-md-10 description');
+      textareaEl.attr('rows','3');
+
+      //div
+      var divEl = $('<div>');
+      divEl.addClass('col-2 col-md-1 hour text-center py-3');
+      if(i<12){
+        divEl.text(i+"AM")
+      }
+      else if(i===12){
+        divEl.text(i+"PM")
+      }
+      else{
+        divEl.text((i-12)+"PM")
+      }
+
+      //time-block
+      var timeBlockEl = $('<div>');
+      timeBlockEl.addClass('row time-block');
+      timeBlockEl.attr('id',i);
+
+      timeBlockEl.append(divEl,textareaEl,buttonEl);
+
+      var timeBlockContainerEl = $('.time-block-container');
+      timeBlockContainerEl.append(timeBlockEl);
+    }
+  }
+  createTimeBlocks();
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -47,6 +91,8 @@ $(function () {
   }
 
   
+    
+  
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -66,11 +112,7 @@ $(function () {
       return "future";
     }
   }
-  $('.time-block').each(function(i) {
-    var blockTime = parseInt($(this).attr('id'));
-    console.log("this" + blockTime)
-    $(this).attr('tense',  getTense(blockTime))
-  });
+  
 
 
   // TODO: Add code to get any user input that was saved in localStorage and set
@@ -98,6 +140,12 @@ $(function () {
   function showDate(){
     $('#currentDay').text(currentDay)
   } 
+  
+  $('.time-block').each(function(i) {
+    var blockTime = parseInt($(this).attr('id'));
+    console.log("this" + blockTime)
+    $(this).attr('tense',  getTense(blockTime))
+  });
   //call getAndSetFromStorage
   getAndSetFromStorage();
   //call showDate
