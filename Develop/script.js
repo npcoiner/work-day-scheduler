@@ -14,18 +14,19 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   $('.time-block').on("click", '.saveBtn', function(e) {
-    console.log("Hello")
-    var timeIndex = parseInt($(this).attr('id')); //gives id of button
+    var $this = $(this)
+    var timeIndex = parseInt($this.attr('id')); //gives id of button
+    console.log(timeIndex)
     var events = readEventsFromStorage();
     if (!events){
       events = [];
     }
-    events[timeIndex] = parseString($(this).attr('description'));
+    var input = ($this.parent().children('textarea').val());
+    console.log(input);
+    events[timeIndex] = input;
     saveEventsToStorage(events);
-
-    printEventData();
     console.log(events);
-
+    getAndSetFromStorage();
   });
   
   //TODO: Add a function which saves all events to storage
@@ -77,12 +78,16 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   function getAndSetFromStorage(){
-    var events = localStorage.getItem('events');
+    var events = readEventsFromStorage();
+    console.log(events)
     if (events) {
-      events = JSON.parse(events);
-      $('.time-block').each(function(i) {
-        if (events[i]){
-          $('this').children("textarea").text(events[i]);
+      $('.time-block').each(function() {
+        var $this = $(this);
+        var index = $this.attr('id');
+        console.log("index" + index)
+        if (events[index]){
+          console.log("Setting: " + events[index])
+          $this.children("textarea").val(events[index]);
         }
       });
     } else {
@@ -95,8 +100,6 @@ $(function () {
   } 
   //call getAndSetFromStorage
   getAndSetFromStorage();
-  //call applyTense
-  applyTense();
   //call showDate
   showDate();
 });
